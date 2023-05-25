@@ -1,0 +1,18 @@
+workdir: /homes/djscheper/Desktop/dataprocessing-21-22/werkcolleges/WC04/
+
+# Separate directories for each task
+inputdir: data/input/
+indexdir: data/index/
+tempdir: data/temp/
+aligndir: data/align/
+sorteddir: data/sorted/
+filtereddir: data/filtered/
+picarddir: picard/
+
+# Directory for the last step; not in data/
+resultdir: result/
+
+# Samples...
+samples:
+    A : A
+    B : B
