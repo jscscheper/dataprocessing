@@ -1,0 +1,2 @@
+@SQ	SN:chr1	LN:30427671
+@PG	ID:bwa	PN:bwa	VN:0.7.17-r1188	CL:bwa samse data/input/reference.fa data/temp/out.sai data/input/A.txt data/input/B.txt
