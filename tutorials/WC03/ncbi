@@ -1,0 +1,29 @@
+# -*- python -*-
+from snakemake.remote.NCBI import RemoteProvider as NCBIRemoteProvider
+NCBI = NCBIRemoteProvider(email="d.j.scheper@st.hanze.nl")
+
+query = '"Zika virus"[Organism] AND (("9000"[SLEN] : "20000"[SLEN]) AND ("2017/03/20"[PDAT] : "2017/03/24"[PDAT])) '
+accessions = NCBI.search(query, retmax=1) # Pick only one.
+
+input_files = expand("{acc}.fasta", acc=accessions)
+
+rule all:
+    input:
+        "results/sizes.fasta"
+
+rule download_and_count:
+    input:
+        NCBI.remote(input_files, db="nuccore", seq_start=5000)
+    output:
+        "results/mf.fasta"
+    run:
+        shell("cat {input} >> results/mf.fasta")    
+
+rule download_and_count_:
+    # Command from last year
+    input:
+        NCBI.remote(input_files, db="nuccore", seq_start=5000)
+    output:
+        "results/sizes.fasta"
+    run:
+        shell("wc -c {input} >> results/sizes.fasta")

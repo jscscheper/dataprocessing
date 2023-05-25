@@ -1,0 +1,11 @@
+url = "bioinf.nl/~fennaf/snakemake/test.txt"
+
+rule all:
+    input:
+        "results/test.txt"
+
+rule download:
+    output: 
+        "results/test.txt"
+    shell:
+        "wget {url}"

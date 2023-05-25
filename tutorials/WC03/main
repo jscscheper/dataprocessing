@@ -1,0 +1,20 @@
+# -*- python -*-
+from os.path import join
+
+configfile: "config/config.yaml"
+include: "workflow/bwa.smk"
+include: "workflow/samtools.smk"
+include: "workflow/bcftools.smk"
+include: "workflow/report.smk"
+workdir: config["workdir"]
+
+import glob
+import os
+
+SAMPLES = [os.path.basename(x).rstrip(".fastq") for x in glob.glob("/homes/djscheper/Desktop/2023/dataprocessing/WC02/data/samples/*")]
+
+rule all:
+    input:
+        "out.html"
+    message:
+        "you've finished the whole pipeline!"  

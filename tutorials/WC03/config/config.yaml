@@ -1,0 +1,7 @@
+SAMPLES:
+  A
+  B
+  C
+  D
+workdir: /homes/djscheper/Desktop/2023/dataprocessing/WC02/data/
+sample_dir: samples/
