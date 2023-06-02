@@ -1,10 +1,7 @@
 # Dataprocessing 2022/2023
 By Dennis Scheper, 373689
+@: d.j.scheper@st.hanze.nl
 
 # Contents
-- `final_assignment/`: directory ...
-- `tutorials/`: directory containing all tutorials (1 till 5)
-
-# Contact
-If you have any questions ... please contact me at d.j.scheper@st.hanze.nl
-
+- `final_assignment/`: Final assignment: a conversion of an existing pipeline to a Snakemake-based version.
+- `tutorials/`: Directory containing WC01-WC05.
