@@ -1,0 +1,14 @@
+# -*- python -*-
+configfile: "config/config.yaml"
+workdir: config['workdir']
+
+include: "workflow/convert.smk"
+include: "workflow/filteration.smk"
+include: "workflow/alignment.smk"
+include: "workflow/samtools.smk"
+include: "workflow/snps.smk"
+include: "workflow/visualization.smk"
+
+rule all:
+    input:
+        "results/foo.png"
