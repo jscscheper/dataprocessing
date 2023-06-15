@@ -1,1 +1,11 @@
-workdir: /mnt/d/repos/schoolprojecten/dataprocessing/eindopdracht/
+workdir: /mnt/d/datap/final_assignment/
+genome: data/genome/Arabidopsis_thaliana.fa
+extensions:
+  - "pac"
+  - "amb"
+  - "ann"
+  - "sa"
+  - "bwt"
+samples:
+  - "test_a"
+  - "test_b"
