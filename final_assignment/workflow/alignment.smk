@@ -8,7 +8,8 @@ rule bwa_index:
 
 rule bwa_alignment:
     input: 
-        lambda wildcards: get_files(wildcards, base_dir='data/trimmed/')
+        R1 = "data/trimmed/{sample}_1_{type}_val_1.fq",
+        R2 = "data/trimmed/{sample}_2_{type}_val_2.fq"
     output:
         aligned_sam = "data/alignment/{sample}_{type}_aln.sam"
     message: "bwa_alignment"
@@ -25,14 +26,18 @@ rule bwa_alignment:
     inputfile="{input}"
 
     if (( $(echo "$avglength > $threshold" | bc -l) )); then
-        touch "{output}"
+        if [ -s {input.R2} ]; then
+            bwa mem {params.genome} {input} > {output}
+        else
+            bwa mem {params.genome} {input.R1} > {output}
+        fi
     else
         if [[ $inputfile == *single* ]]; then
-            bwa aln {params.genome} {input} > {params.tmp_file}
+            bwa aln {params.genome} {input.R1} > {params.tmp_file}
             bwa samse {params.genome} {params.tmp_file} {input} > {output}
         else
-            bwa aln {params.genome} {input[0]} >> {params.tmp_file}
-            bwa aln {params.genome} {input[1]} >> {params.tmp_file2}
+            bwa aln {params.genome} {input.R1} >> {params.tmp_file}
+            bwa aln {params.genome} {input.R2} >> {params.tmp_file2}
             bwa sampe {params.genome} {params.tmp_file} {params.tmp_file2} {input} > {output}
         fi
     fi

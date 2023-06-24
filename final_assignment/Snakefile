@@ -2,7 +2,7 @@
 configfile: "config/config.yaml"
 workdir: config['workdir']
 
-#include: "workflow/convert.smk"
+include: "workflow/convert.smk"
 include: "workflow/filteration.smk"
 include: "workflow/alignment.smk"
 include: "workflow/samtools.smk"
@@ -12,13 +12,9 @@ include: "workflow/visualization.smk"
 def get_files(wildcards, base_dir):
     if wildcards.sample.startswith('single') and base_dir == 'data/fq/':
         return f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq'
-    elif wildcards.sample.startswith('single') and base_dir == 'data/trimmed/':
-            return f'{base_dir}{wildcards.sample}_1_{wildcards.type}_val_1.fq'
-    elif wildcards.sample.startswith('paired') and base_dir == 'data/fq/':
-        return [f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq', f'{base_dir}{wildcards.sample}_2_{wildcards.type}.fq']
     else:
-        return [f'{base_dir}{wildcards.sample}_1_{wildcards.type}_val_1.fq', f'{base_dir}{wildcards.sample}_2_{wildcards.type}_val_2.fq']
+        return [f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq', f'{base_dir}{wildcards.sample}_2_{wildcards.type}.fq']
 
 rule all:
     input:
-        expand("data/alignment/{sample}_{type}_aln.sam", sample=config['samples'], type=config['types'])
+        expand("results/{sample}.png", sample=config['samples'])
