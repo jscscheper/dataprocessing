@@ -11,15 +11,15 @@ rule bwa_alignment:
         R1 = "data/trimmed/{sample}_1_{type}_val_1.fq",
         R2 = "data/trimmed/{sample}_2_{type}_val_2.fq"
     output:
-        aligned_sam = "data/alignment/{sample}_{type}_aln.sam"
+        aligned_sam = "data/alignment/{sample}_{type}_aln.sam",
+        tmp_file = temp("data/alignment/{sample}_{type}_1.sai.sa"),
+        tmp_file2 = temp("data/alignment/{sample}_{type}_2.sai.sa")
     message: "bwa_alignment"
     log: "logs/alignment/{sample}_{type}.txt"
     benchmark: "benchmarks/{sample}_{type}.alignment.benchmark.txt"
     params:
         genome = config['genome'],
-        threshold = config['threshold_reads'],
-        tmp_file = temp("{sample}_{type}_1.sai.sa"),
-        tmp_file2 = temp("{sample}_{type}_2.sai.sa")
+        threshold = config['threshold_reads']
     shell: """
     avglength="$(seqkit fx2tab -nl {input} | awk -F'\\t' '{{sum+=$2}} END {{print sum/NR}}')"
     threshold="{params.threshold}"
@@ -34,11 +34,11 @@ rule bwa_alignment:
     else
         if [[ $inputfile == *single* ]]; then
             bwa aln {params.genome} {input.R1} > {params.tmp_file}
-            bwa samse {params.genome} {params.tmp_file} {input} > {output}
+            bwa samse {params.genome} {output.tmp_file} {input} > {output}
         else
-            bwa aln {params.genome} {input.R1} >> {params.tmp_file}
-            bwa aln {params.genome} {input.R2} >> {params.tmp_file2}
-            bwa sampe {params.genome} {params.tmp_file} {params.tmp_file2} {input} > {output}
+            bwa aln {params.genome} {input.R1} >> {output.tmp_file}
+            bwa aln {params.genome} {input.R2} >> {output.tmp_file2}
+            bwa sampe {params.genome} {output.tmp_file} {output.tmp_file2} {input} > {output}
         fi
     fi
     """

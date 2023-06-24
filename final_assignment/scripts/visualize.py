@@ -34,11 +34,11 @@ def parse_arguments():
                         help="Name and file location of produced plot", 
                         required=True)
     parser.add_argument("-f", "--frequency",
-                        help="Frequency threshold; standard is 30.",
+                        help="Frequency threshold; standard is 60.",
                         default=60, required=False)
     parser.add_argument("-d", "--min_depth",
                         help="Min depth; standard is 10",
-                        default=50, required=False)
+                        default=10, required=False)
     parser.add_argument("-D", "--max_depth",
                         help="Max depth; standard is 100",
                         default=100, required=False)

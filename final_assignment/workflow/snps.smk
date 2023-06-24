@@ -24,8 +24,8 @@ rule snp_filter:
 
 rule identifying_and_annotating_snps:
     input:
-        mutant = "data/snp/{sample}_mut.txt",
-        control = "data/snp/{sample}_wt.txt"
+        mutant = "data/snp/filtered_{sample}_mut.txt",
+        control = "data/snp/filtered_{sample}_wt.txt"
     output:
         "data/snp/{sample}_annotated_snps.txt"
     log: "logs/snps/{sample}.identifying_and_annotating_snps.txt"
@@ -34,5 +34,5 @@ rule identifying_and_annotating_snps:
     conda: config['workdir'] + "envs/snps.yaml"
     shell:
      """
-     subtractBed -a {input.control} -b {input.mutant} | snpEff Arabidopsis_thaliana > {output}
+     subtractBed -a {input.control} -b {input.mutant} | snpEff Arabidopsis_thaliana -noLog -v > {output}
      """

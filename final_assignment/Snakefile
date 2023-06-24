@@ -2,7 +2,7 @@
 configfile: "config/config.yaml"
 workdir: config['workdir']
 
-include: "workflow/convert.smk"
+#include: "workflow/convert.smk"
 include: "workflow/filteration.smk"
 include: "workflow/alignment.smk"
 include: "workflow/samtools.smk"
@@ -10,7 +10,7 @@ include: "workflow/snps.smk"
 include: "workflow/visualization.smk"
 
 def get_files(wildcards, base_dir):
-    if wildcards.sample.startswith('single') and base_dir == 'data/fq/':
+    if wildcards.sample.startswith('single'):
         return f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq'
     else:
         return [f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq', f'{base_dir}{wildcards.sample}_2_{wildcards.type}.fq']

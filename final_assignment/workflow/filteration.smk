@@ -1,6 +1,6 @@
 rule trim_galore:
     input:
-        lambda wildcards: get_files(wildcards, base_dir='data/fq/')
+        lambda wildcards: get_files(wildcards, base_dir='data/samples/')
     output:
         R1 = "data/trimmed/{sample}_1_{type}_val_1.fq",
         R2 = "data/trimmed/{sample}_2_{type}_val_2.fq"
