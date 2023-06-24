@@ -3,18 +3,18 @@ rule bwa_index:
         config['genome']
     output:
         expand(config['genome'] + ".{extension}", extension=config["extensions"])
-    message: "Indexing reference genome ({input})... to {output}"
+    message: "Indexing reference genome {input}..."
     shell: "bwa index {input}"
 
 rule bwa_alignment:
     input: 
-        R1 = "data/trimmed/{sample}_1_{type}_val_1.fq",
-        R2 = "data/trimmed/{sample}_2_{type}_val_2.fq"
+        R1 = config['trimmed-dir'] + "{sample}_1_{type}_val_1.fq",
+        R2 = config['trimmed-dir'] + "{sample}_2_{type}_val_2.fq"
     output:
-        aligned_sam = "data/alignment/{sample}_{type}_aln.sam",
-        tmp_file = temp("data/alignment/{sample}_{type}_1.sai.sa"),
-        tmp_file2 = temp("data/alignment/{sample}_{type}_2.sai.sa")
-    message: "bwa_alignment"
+        aligned_sam = config['alignment-dir'] + "{sample}_{type}_aln.sam",
+        tmp_file =config['alignment-dir'] + temp("{sample}_{type}_1.sai.sa"),
+        tmp_file2 = config['alignment-dir'] + temp("{sample}_{type}_2.sai.sa")
+    message: "Aligning on {input.R1} and {input.R1} to produce {output.aligned_sam}"
     log: "logs/alignment/{sample}_{type}.txt"
     benchmark: "benchmarks/{sample}_{type}.alignment.benchmark.txt"
     params:

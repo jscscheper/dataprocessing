@@ -17,4 +17,4 @@ def get_files(wildcards, base_dir):
 
 rule all:
     input:
-        expand("results/{sample}.png", sample=config['samples'])
+        expand(config['results-dir'] + "{sample}.png", sample=config['samples'])

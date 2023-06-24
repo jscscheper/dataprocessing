@@ -1,9 +1,9 @@
 rule snp_calling:
     input:
-        bam = "data/samtools/{sample}_{type}_sorted.bam"
+        bam = config['samtools-dir'] + "{sample}_{type}_sorted.bam"
     output:
-        "data/snp/{sample}_{type}.txt"
-    conda: config['workdir'] + "envs/snps.yaml"
+        config['snp-dir'] + "{sample}_{type}.txt"
+    conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     benchmark: "benchmarks/{sample}_{type}.snps.snp_calling.benchmark.txt"
     params:
         genome = config['genome']
@@ -13,10 +13,10 @@ rule snp_calling:
 
 rule snp_filter:
     input:
-        "data/snp/{sample}_{type}.txt"
+         config['snp-dir'] + "{sample}_{type}.txt"
     output:
-        "data/snp/filtered_{sample}_{type}.txt"
-    conda: config['workdir'] + "envs/snps.yaml"
+         config['snp-dir'] + "filtered_{sample}_{type}.txt"
+    conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     benchmark: "benchmarks/{sample}_{type}.snps.snp_filter.benchmark.txt"
     log: "logs/snps/{sample}_{type}.snp_filter.txt"
     message: "Filtering SNPs on {input} to {output}"
@@ -24,14 +24,14 @@ rule snp_filter:
 
 rule identifying_and_annotating_snps:
     input:
-        mutant = "data/snp/filtered_{sample}_mut.txt",
-        control = "data/snp/filtered_{sample}_wt.txt"
+        mutant =  config['snp-dir'] + "filtered_{sample}_mut.txt",
+        control = config['snp-dir'] + "filtered_{sample}_wt.txt"
     output:
-        "data/snp/{sample}_annotated_snps.txt"
+         config['snp-dir'] + "{sample}_annotated_snps.txt"
     log: "logs/snps/{sample}.identifying_and_annotating_snps.txt"
     message: "Identifying and annotating SNPs on {input} to {output}"
     benchmark: "benchmarks/{sample}_snps.identifying_and_annotating_snps.benchmark.txt"
-    conda: config['workdir'] + "envs/snps.yaml"
+    conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     shell:
      """
      subtractBed -a {input.control} -b {input.mutant} | snpEff Arabidopsis_thaliana -noLog -v > {output}

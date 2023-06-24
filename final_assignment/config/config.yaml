@@ -1,19 +1,31 @@
 workdir: /mnt/d/datap/final_assignment/
+
 genome: data/genome/Arabidopsis_thaliana.fa
 trimmed-dir: data/trimmed/
+alignment-dir: data/alignment/
+samtools-dir: data/samtools/
+snp-dir: data/snp/
+result-dir: results/
+samples-dir: data/samples/
+bam-dir: data/bam_samples/
+conda-envs: envs/
+
 extensions:
   - "pac"
   - "amb"
   - "ann"
   - "sa"
   - "bwt"
+
 samples:
   - "single_long"
   - "single_short"
   - "paired_long"
   - "paired_short"
+
 types:
   - "mut"
   - "wt"
+
 threads: 8
 threshold_reads: 90.00

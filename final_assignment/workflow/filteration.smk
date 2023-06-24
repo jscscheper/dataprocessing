@@ -1,20 +1,16 @@
 rule trim_galore:
     input:
-        lambda wildcards: get_files(wildcards, base_dir='data/samples/')
+        lambda wildcards: get_files(wildcards, base_dir=config['samples-dir'])
     output:
-        R1 = "data/trimmed/{sample}_1_{type}_val_1.fq",
-        R2 = "data/trimmed/{sample}_2_{type}_val_2.fq"
-    message: "Trimming on "
+        R1 = config['trimmed-dir'] + "{sample}_1_{type}_val_1.fq",
+        R2 = config['trimmed-dir'] + "{sample}_2_{type}_val_2.fq"
+    message: "Trimming on {input} to create {output.R1} and {output.R2}"
     log: "logs/quality_filteration/{sample}_{type}.log"
     benchmark: "benchmarks/{sample}_{type}.trimmed.benchmark.txt"
     params:
         dir = config['trimmed-dir'],
-        temp = "data/trimmed/{sample}_1_{type}_trimmed.fq"
+        temp_name = config['trimmed-dir'] + "{sample}_1_{type}_trimmed.fq"
     run:
-        # Files are named "{sample}_trimmed.fq" when single-read and "{sample}_val_1/2" for paired-end, we can't force
-        # trim_galore to change behaviors and to have one simplified format, therefore, we rename the paired-end reads
-        # to the same format as for single-end reads
-
         if len(input) == 1:
         # STILL NEEDS A FIX
             shell("trim_galore -o {params.dir} --no_report_file {input}")
