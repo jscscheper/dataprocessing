@@ -9,7 +9,7 @@ rule view:
     conda: config['workdir'] + config['conda-envs'] + "samtools.yaml"
     benchmark: "benchmarks/{sample}_{type}.index.benchmark.txt"
     shell: """
-    samtools view -@ {threads} -bS -o {output} {input} 2 > {log}  
+    samtools view -@ {threads} -bS -o {output} {input} 2> {log}  
     """
 
 rule sort:
@@ -19,11 +19,10 @@ rule sort:
         config['samtools-dir'] + "{sample}_{type}_sorted.bam"
     message: "Sorting {input} to {output}... "
     log: "logs/samtools/{sample}_{type}.txt"
-    threads: config['threads']
     conda: config['workdir'] + config['conda-envs'] + "samtools.yaml"
     benchmark: "benchmarks/{sample}_{type}.index.benchmark.txt"
     shell: """
-    samtools sort -@ {threads} -o {output} {input} 2 > {log}
+    samtools sort -o {output} {input} 2> {log}
     """
 
 rule rmdup:
@@ -36,7 +35,7 @@ rule rmdup:
     conda: config['workdir'] + config['conda-envs'] + "samtools.yaml"
     benchmark: "benchmarks/{sample}_{type}.index.benchmark.txt"
     shell: """
-    samtools rmdup -s {input} {output} 2 > {log}
+    samtools rmdup -s {input} {output} 2> {log}
     """
 
 rule index:
@@ -49,5 +48,5 @@ rule index:
     log: "logs/samtools/{sample}_{type}.txt"
     benchmark: "benchmarks/{sample}_{type}.index.benchmark.txt"
     shell: """
-    samtools index {input} {output} 2 > {log}
+    samtools index {input} {output} 2> {log}
     """

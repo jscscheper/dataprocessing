@@ -10,6 +10,15 @@ include: "workflow/snps.smk"
 include: "workflow/visualization.smk"
 
 def get_files(wildcards, base_dir):
+    """
+    A helper function that is used in circumstances in which output can
+    differ depending on if a sample is a single-end or paired-end read.
+    A single-end read uses, in most cases, one input file and paired-ends
+    require two.
+    :wildcards: wildcards used in the snakemake environment
+    :base_dir: pathway to directory where input files are stored
+    :return: a string covering one input file or a list with two input files
+    """
     if wildcards.sample.startswith('single'):
         return f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq'
     else:
@@ -17,4 +26,4 @@ def get_files(wildcards, base_dir):
 
 rule all:
     input:
-        expand(config['results-dir'] + "{sample}.png", sample=config['samples'])
+        expand(config['result-dir'] + "{sample}.png", sample=config['samples'])

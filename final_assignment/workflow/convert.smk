@@ -9,8 +9,8 @@ rule bam_to_fastq:
     message: "Converting BAM ({input.bam}) to FastQ ({output})..."
     shell: """
         if [ \"$(samtools view -c -f 1 {input.bam})\" ]; then
-            bamToFastq -i {input.bam} -fq {output} 2 > {log}
+            bamToFastq -i {input.bam} -fq {output} 2> {log}
         else
-            bamToFastq -i {input.bam} -fq {output} -fq2 {output} 2 > {log}
+            bamToFastq -i {input.bam} -fq {output} -fq2 {output} 2> {log}
         fi
         """

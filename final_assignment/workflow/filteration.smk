@@ -5,7 +5,7 @@ rule trim_galore:
         R1 = config['trimmed-dir'] + "{sample}_1_{type}_val_1.fq",
         R2 = config['trimmed-dir'] + "{sample}_2_{type}_val_2.fq"
     message: "Trimming on {input} to create {output.R1} and {output.R2}"
-    log: "logs/quality_filteration/{sample}_{type}.log"
+    log: "logs/quality_filteration/{sample}_{type}.txt"
     benchmark: "benchmarks/{sample}_{type}.trimmed.benchmark.txt"
     threads: config['threads']
     params:
@@ -14,9 +14,9 @@ rule trim_galore:
     run:
         if len(input) == 1:
         # STILL NEEDS A FIX
-            shell("trim_galore --cores {threads} -o {params.dir} --no_report_file {input} 2 > {log}")
+            shell("trim_galore --cores {threads} -o {params.dir} --no_report_file {input} 2> {log}")
             shell("touch {output.R2}")
-            shell("mv {params.temp} {output.R1}")
+            shell("mv {params.temp_name} {output.R1}")
         else:
-            shell("trim_galore --cores {threads} -o {params.dir} --no_report_file --paired {input}" 2 > {log})
+            shell("trim_galore --cores {threads} -o {params.dir} --no_report_file --paired {input} 2> {log}")
         
