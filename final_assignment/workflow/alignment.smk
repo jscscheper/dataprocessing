@@ -4,6 +4,8 @@ rule bwa_index:
     output:
         expand(config['genome'] + ".{extension}", extension=config["extensions"])
     message: "Indexing reference genome {input}..."
+    benchmark: "benchmark/genome/genome.txt"
+    log: "logs/genome/genome.txt"
     shell: "bwa index {input}"
 
 rule bwa_alignment:
@@ -17,6 +19,7 @@ rule bwa_alignment:
     message: "Aligning on {input.R1} and {input.R1} to produce {output.aligned_sam}"
     log: "logs/alignment/{sample}_{type}.txt"
     benchmark: "benchmarks/{sample}_{type}.alignment.benchmark.txt"
+    threads: config['threads']
     params:
         genome = config['genome'],
         threshold = config['threshold_reads']
@@ -27,18 +30,18 @@ rule bwa_alignment:
 
     if (( $(echo "$avglength > $threshold" | bc -l) )); then
         if [ -s {input.R2} ]; then
-            bwa mem {params.genome} {input} > {output}
+            bwa mem -t {threads} {params.genome} {input} - > {output} 2 > {log}
         else
-            bwa mem {params.genome} {input.R1} > {output}
+            bwa mem -t {threads} {params.genome} {input.R1} - > {output} 2 > {log}
         fi
     else
         if [[ $inputfile == *single* ]]; then
-            bwa aln {params.genome} {input.R1} > {params.tmp_file}
-            bwa samse {params.genome} {output.tmp_file} {input} > {output}
+            bwa aln -t {threads} {params.genome} {input.R1} - > {params.tmp_file} 2 > {log}
+            bwa samse {params.genome} {output.tmp_file} {input} - > {output} > 2 {log}
         else
-            bwa aln {params.genome} {input.R1} >> {output.tmp_file}
-            bwa aln {params.genome} {input.R2} >> {output.tmp_file2}
-            bwa sampe {params.genome} {output.tmp_file} {output.tmp_file2} {input} > {output}
+            bwa aln -t {threads} {params.genome} {input.R1} - > {output.tmp_file} 2 > {log}
+            bwa aln -t {threads} {params.genome} {input.R2} - > {output.tmp_file2} 2 > {log}
+            bwa sampe {params.genome} {output.tmp_file} {output.tmp_file2} {input} - > {output} 2 > {log} 
         fi
     fi
     """

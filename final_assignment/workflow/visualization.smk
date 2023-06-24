@@ -7,4 +7,4 @@ rule visualize:
     log: "logs/visualization/{sample}.txt"
     benchmark: "benchmarks/{sample}.benchmark.txt"
     conda: config['workdir'] + config['conda-envs'] + "visualization.yaml"
-    shell: "python scripts/visualize.py -i {input} -o {output}"
+    shell: "python scripts/visualize.py -i {input} -o {output} 2 > {log}"

@@ -9,7 +9,7 @@ rule snp_calling:
         genome = config['genome']
     log: "logs/snps/{sample}_{type}.snp_calling.txt"
     message: "Calling SNPs on {input.bam} to {output}"
-    shell: """samtools mpileup -Q 30 -C 50 -P Illumina -t DP,DV,INFO/DPR,DP4,SP,DV -Buf {params.genome} {input.bam} | bcftools view -vcg --types snps> {output}"""
+    shell: """(samtools mpileup -Q 30 -C 50 -P Illumina -t DP,DV,INFO/DPR,DP4,SP,DV -Buf {params.genome} {input.bam} | bcftools view -vcg --types snps - > {output}) 2 > {log}"""
 
 rule snp_filter:
     input:
@@ -20,7 +20,7 @@ rule snp_filter:
     benchmark: "benchmarks/{sample}_{type}.snps.snp_filter.benchmark.txt"
     log: "logs/snps/{sample}_{type}.snp_filter.txt"
     message: "Filtering SNPs on {input} to {output}"
-    shell: "node scripts/snpsPicker.js -i {input} -o {output}"
+    shell: "node scripts/snpsPicker.js -i {input} -o {output} 2 > {log}"
 
 rule identifying_and_annotating_snps:
     input:
@@ -34,5 +34,5 @@ rule identifying_and_annotating_snps:
     conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     shell:
      """
-     subtractBed -a {input.control} -b {input.mutant} | snpEff Arabidopsis_thaliana -noLog -v > {output}
+     (subtractBed -a {input.control} -b {input.mutant} | snpEff Arabidopsis_thaliana -noLog -v - > {output}) 2 > {log}
      """
