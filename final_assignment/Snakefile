@@ -10,11 +10,15 @@ include: "workflow/snps.smk"
 include: "workflow/visualization.smk"
 
 def get_files(wildcards, base_dir):
-    if wildcards.sample.startswith('single'):
+    if wildcards.sample.startswith('single') and base_dir == 'data/fq/':
         return f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq'
-    else:
+    elif wildcards.sample.startswith('single') and base_dir == 'data/trimmed/':
+            return f'{base_dir}{wildcards.sample}_1_{wildcards.type}_val_1.fq'
+    elif wildcards.sample.startswith('paired') and base_dir == 'data/fq/':
         return [f'{base_dir}{wildcards.sample}_1_{wildcards.type}.fq', f'{base_dir}{wildcards.sample}_2_{wildcards.type}.fq']
+    else:
+        return [f'{base_dir}{wildcards.sample}_1_{wildcards.type}_val_1.fq', f'{base_dir}{wildcards.sample}_2_{wildcards.type}_val_2.fq']
 
 rule all:
     input:
-        expand("data/trimmed/{sample}_{index}_{type}_val_{index}.fq", sample=config['samples'], type=config['types'], index=(1,2))
+        expand("data/alignment/{sample}_{type}_aln.sam", sample=config['samples'], type=config['types'])

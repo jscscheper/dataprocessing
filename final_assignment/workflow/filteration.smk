@@ -8,7 +8,8 @@ rule trim_galore:
     log: "logs/quality_filteration/{sample}_{type}.log"
     benchmark: "benchmarks/{sample}_{type}.trimmed.benchmark.txt"
     params:
-        dir = config['trimmed-dir']
+        dir = config['trimmed-dir'],
+        temp = "data/trimmed/{sample}_1_{type}_trimmed.fq"
     run:
         # Files are named "{sample}_trimmed.fq" when single-read and "{sample}_val_1/2" for paired-end, we can't force
         # trim_galore to change behaviors and to have one simplified format, therefore, we rename the paired-end reads
@@ -16,8 +17,9 @@ rule trim_galore:
 
         if len(input) == 1:
         # STILL NEEDS A FIX
-            shell("trim_galore -o {params.dir} --no_report_file {input} > {output.R1}")
+            shell("trim_galore -o {params.dir} --no_report_file {input}")
             shell("touch {output.R2}")
+            shell("mv {params.temp} {output.R1}")
         else:
             shell("trim_galore -o {params.dir} --no_report_file --paired {input}")
         

@@ -1,5 +1,6 @@
 workdir: /mnt/d/datap/final_assignment/
 genome: data/genome/Arabidopsis_thaliana.fa
+trimmed-dir: data/trimmed/
 extensions:
   - "pac"
   - "amb"
@@ -7,5 +8,12 @@ extensions:
   - "sa"
   - "bwt"
 samples:
-  - "test_a"
-  - "test_b"
+  - "single_long"
+  - "single_short"
+  - "paired_long"
+  - "paired_short"
+types:
+  - "mut"
+  - "wt"
+threads: 8
+threshold_reads: 90.00
