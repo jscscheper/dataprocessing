@@ -52,6 +52,10 @@ In the root of this repository, you will find this `README.md`, a visual represe
 - `scripts`: contains Python (`visualize.py`) and JS (`snpsPicker.js` (artMAP)) scripts used in the pipeline.
 - `workflow`: contains every rule and is imported into the main file (`Snakemake`).
 
+A visual representation of our pipeline is shown in the following DAG:
+
+![dag.png](dag.png)
+
 ## Installation and Configuration
 
 **Step 1: Acquiring Files**
