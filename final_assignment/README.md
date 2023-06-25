@@ -52,7 +52,16 @@ In the root of this repository, you will find this `README.md`, a visual represe
 - `scripts`: contains Python (`visualize.py`) and JS (`snpsPicker.js` (artMAP)) scripts used in the pipeline.
 - `workflow`: contains every rule and is imported into the main file (`Snakemake`).
 
-A visual representation of our pipeline is shown in the following DAG:
+A visual representation of our pipeline is shown in the following DAG. It consists of the following steps:
+- `unpack`: unpack all files that are in `data/data.zip`
+- `trim_galore`: trim each sample; paired-end reads are trimmed together
+- `bwa_alignment`: alignment against the reference genome, paired-end reads are referenced together
+- `view`: convert SAM files that came out of the alignment process to a BAM format
+- `sort`: sort BAM files
+- `snp_calling`: "Call" upon SNPs by comparing them to a database
+- `snp_filter`: Filter found SNPs based on, for example, frequency. This step is facilitated by a script made by the authors of artMAP
+- `identifiying_and_annotating_snps`: identify founded SNPs by using both the wild-type and mutant samples and annotate against a SNPs database 
+- `visualize`: visualize the founded SNPs to a final image
 
 ![dag.png](dag.png)
 
