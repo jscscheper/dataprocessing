@@ -2,6 +2,8 @@
 Dennis Scheper, 373689</br>
 E: d.j.scheper@st.hanze.nl
 
+IMPORTANT NOTE: `data.zip` might be corrupt when the whole repository is cloned or downloaded. If this is the case, please download the file on its own from by navigating to `data/data.zip` and download it from there. Download and place the zip in de `data/` directory; Snakemake will unzip the file.
+
 This repository contains the Snakemake version of the artMAP pipeline. [[1]][artmap] artMAP is a pipeline that identifies EMS-induced mutations in _Arabidopsis thaliana_. The authors wanted to develop a pipeline that is accessible to people without bioinformatics expertise and, therefore, integrated the pipeline into a Docker environment. Docker provides an easy-to-use installation process and makes artMAP widely available to a wide audience. artMAP's laid-back approach to the identification of EMS-induced mutations is made possible by its graphical interface where a user can adjust parameters by filling them into a form. A user also needs to declare whether its input file consists of single- or paired-end reads and whether reads are "short" or "long".
 
 When turning this pipeline into a Snakemake-based version, we automated the process of determining with which kind of input the pipeline was dealing. We accomplished this by naming samples a certain way, for example, naming the sample `single_long`. Now, this version of the artMAP pipeline is fully automated and operates via the command line. Therefore, it needs more expertise than the original pipeline required but the aspect of automation makes the pipeline more sufficient in handling big data operations. The authors did not provide enough test data, therefore, we generated our data to assess the validity of the pipeline.
