@@ -1,0 +1,46 @@
+[bwa_aln] 17bp reads: max_diff = 2
+[bwa_aln] 38bp reads: max_diff = 3
+[bwa_aln] 64bp reads: max_diff = 4
+[bwa_aln] 93bp reads: max_diff = 5
+[bwa_aln] 124bp reads: max_diff = 6
+[bwa_aln] 157bp reads: max_diff = 7
+[bwa_aln] 190bp reads: max_diff = 8
+[bwa_aln] 225bp reads: max_diff = 9
+[bwa_aln_core] calculate SA coordinate... 22.17 sec
+[bwa_aln_core] write to the disk... 0.04 sec
+[bwa_aln_core] 99629 sequences have been processed.
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa aln -t 8 data/genome/Arabidopsis_thaliana.fa data/trimmed/paired_short_1_wt_val_1.fq
+[main] Real time: 5.125 sec; CPU: 22.632 sec
+[bwa_aln] 17bp reads: max_diff = 2
+[bwa_aln] 38bp reads: max_diff = 3
+[bwa_aln] 64bp reads: max_diff = 4
+[bwa_aln] 93bp reads: max_diff = 5
+[bwa_aln] 124bp reads: max_diff = 6
+[bwa_aln] 157bp reads: max_diff = 7
+[bwa_aln] 190bp reads: max_diff = 8
+[bwa_aln] 225bp reads: max_diff = 9
+[bwa_aln_core] calculate SA coordinate... 23.32 sec
+[bwa_aln_core] write to the disk... 0.04 sec
+[bwa_aln_core] 99629 sequences have been processed.
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa aln -t 8 data/genome/Arabidopsis_thaliana.fa data/trimmed/paired_short_2_wt_val_2.fq
+[main] Real time: 4.882 sec; CPU: 23.671 sec
+[bwa_sai2sam_pe_core] convert to sequence coordinate... 
+[infer_isize] (25, 50, 75) percentile: (194, 256, 344)
+[infer_isize] low and high boundaries: 75 and 644 for estimating avg and std
+[infer_isize] inferred external isize from 66747 pairs: 276.404 +/- 110.354
+[infer_isize] skewness: 0.865; kurtosis: 0.350; ap_prior: 1.00e-05
+[infer_isize] inferred maximum insert size: 983 (6.40 sigma)
+[bwa_sai2sam_pe_core] time elapses: 4.17 sec
+[bwa_sai2sam_pe_core] changing coordinates of 3406 alignments.
+[bwa_sai2sam_pe_core] align unmapped mate...
+[bwa_paired_sw] 1121 out of 1376 Q17 singletons are mated.
+[bwa_paired_sw] 434 out of 711 Q17 discordant pairs are fixed.
+[bwa_sai2sam_pe_core] time elapses: 0.22 sec
+[bwa_sai2sam_pe_core] refine gapped alignments... 0.22 sec
+[bwa_sai2sam_pe_core] print alignments... 1.16 sec
+[bwa_sai2sam_pe_core] 99629 sequences have been processed.
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa sampe data/genome/Arabidopsis_thaliana.fa data/alignment/paired_short_wt_1.sai.sa data/alignment/paired_short_wt_2.sai.sa data/trimmed/paired_short_1_wt_val_1.fq data/trimmed/paired_short_2_wt_val_2.fq
+[main] Real time: 12.020 sec; CPU: 6.289 sec

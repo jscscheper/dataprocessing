@@ -1,0 +1,21 @@
+[bwa_aln] 17bp reads: max_diff = 2
+[bwa_aln] 38bp reads: max_diff = 3
+[bwa_aln] 64bp reads: max_diff = 4
+[bwa_aln] 93bp reads: max_diff = 5
+[bwa_aln] 124bp reads: max_diff = 6
+[bwa_aln] 157bp reads: max_diff = 7
+[bwa_aln] 190bp reads: max_diff = 8
+[bwa_aln] 225bp reads: max_diff = 9
+[bwa_aln_core] calculate SA coordinate... 22.55 sec
+[bwa_aln_core] write to the disk... 0.08 sec
+[bwa_aln_core] 99987 sequences have been processed.
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa aln -t 8 data/genome/Arabidopsis_thaliana.fa data/trimmed/single_short_1_wt_val_1.fq
+[main] Real time: 4.523 sec; CPU: 23.081 sec
+[bwa_aln_core] convert to sequence coordinate... 1.09 sec
+[bwa_aln_core] refine gapped alignments... 0.10 sec
+[bwa_aln_core] print alignments... 0.41 sec
+[bwa_aln_core] 99987 sequences have been processed.
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa samse data/genome/Arabidopsis_thaliana.fa data/alignment/single_short_wt_1.sai.sa data/trimmed/single_short_1_wt_val_1.fq
+[main] Real time: 4.535 sec; CPU: 1.815 sec

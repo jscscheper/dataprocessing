@@ -1,0 +1,6 @@
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 98212 sequences (9529343 bp)...
+[M::mem_process_seqs] Processed 98212 reads in 40.494 CPU sec, 5.112 real sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa mem -t 8 data/genome/Arabidopsis_thaliana.fa data/trimmed/single_long_1_wt_val_1.fq
+[main] Real time: 9.052 sec; CPU: 41.251 sec
