@@ -1,0 +1,345 @@
+Path to Cutadapt set as: 'cutadapt' (default)
+Cutadapt seems to be working fine (tested command 'cutadapt --version')
+Cutadapt version: 4.3
+Could not detect version of Python used by Cutadapt from the first line of Cutadapt (but found this: >>>#!/bin/sh<<<)
+Letting the (modified) Cutadapt deal with the Python version instead
+Parallel gzip (pigz) detected. Proceeding with multicore (de)compression using 8 cores
+
+igzip detected. Using igzip for decompressing
+
+No quality encoding type selected. Assuming that the data provided uses Sanger encoded Phred scores (default)
+
+Output will be written into the directory: /mnt/d/datap/final_assignment/data/trimmed/
+
+
+AUTO-DETECTING ADAPTER TYPE
+===========================
+Attempting to auto-detect adapter type from the first 1 million sequences of the first file (>> data/samples/paired_long_1_wt.fq <<)
+
+Found perfect matches for the following adapter sequences:
+Adapter type	Count	Sequence	Sequences analysed	Percentage
+Illumina	2223	AGATCGGAAGAGC	100000	2.22
+Nextera	3	CTGTCTCTTATA	100000	0.00
+smallRNA	0	TGGAATTCTCGG	100000	0.00
+Using Illumina adapter for trimming (count: 2223). Second best hit was Nextera (count: 3)
+
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: data/samples/paired_long_1_wt.fq
+Trimming mode: paired-end
+Trim Galore version: 0.6.10
+Cutadapt version: 4.3
+Python version: could not detect
+Number of cores used for trimming: 8
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+
+Cutadapt seems to be fairly up-to-date (version 4.3). Setting -j 8
+Writing final adapter and quality trimmed output to paired_long_1_wt_trimmed.fq
+
+
+  >>> Now performing quality (cutoff '-q 20') and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file data/samples/paired_long_1_wt.fq <<< 
+This is cutadapt 4.3 with Python 3.9.2
+Command line parameters: -j 8 -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC data/samples/paired_long_1_wt.fq
+Processing single-end reads on 8 cores ...
+Finished in 2.098 s (20.981 µs/read; 2.86 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:                 100,000
+Reads with adapters:                    39,847 (39.8%)
+Reads written (passing filters):       100,000 (100.0%)
+
+Total basepairs processed:    12,600,000 bp
+Quality-trimmed:                 134,112 bp (1.1%)
+Total written (filtered):     12,330,332 bp (97.9%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 39847 times
+
+Minimum overlap: 1
+No. of allowed errors:
+1-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 41.1%
+  C: 19.9%
+  G: 15.6%
+  T: 23.3%
+  none/other: 0.1%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	28672	25000.0	0	28672
+2	5245	6250.0	0	5245
+3	2134	1562.5	0	2134
+4	577	390.6	0	577
+5	192	97.7	0	192
+6	137	24.4	0	137
+7	94	6.1	0	94
+8	98	1.5	0	98
+9	103	0.4	0	100 3
+10	101	0.1	1	96 5
+11	90	0.0	1	86 4
+12	101	0.0	1	96 5
+13	63	0.0	1	60 3
+14	96	0.0	1	91 5
+15	70	0.0	1	67 3
+16	68	0.0	1	65 3
+17	67	0.0	1	64 3
+18	93	0.0	1	90 3
+19	75	0.0	1	71 4
+20	63	0.0	1	59 4
+21	60	0.0	1	57 3
+22	45	0.0	1	42 3
+23	75	0.0	1	69 6
+24	47	0.0	1	45 2
+25	64	0.0	1	60 4
+26	37	0.0	1	34 3
+27	65	0.0	1	59 6
+28	63	0.0	1	60 3
+29	50	0.0	1	48 2
+30	57	0.0	1	57
+31	57	0.0	1	57
+32	64	0.0	1	64
+33	32	0.0	1	31 1
+34	28	0.0	1	27 1
+35	42	0.0	1	41 1
+36	38	0.0	1	35 3
+37	41	0.0	1	39 2
+38	49	0.0	1	47 2
+39	46	0.0	1	44 2
+40	36	0.0	1	35 1
+41	72	0.0	1	70 2
+42	20	0.0	1	17 3
+43	15	0.0	1	14 1
+44	20	0.0	1	20
+45	28	0.0	1	27 1
+46	30	0.0	1	28 2
+47	34	0.0	1	33 1
+48	33	0.0	1	33
+49	28	0.0	1	28
+50	18	0.0	1	18
+51	27	0.0	1	27
+52	22	0.0	1	21 1
+53	20	0.0	1	19 1
+54	12	0.0	1	12
+55	15	0.0	1	14 1
+56	22	0.0	1	22
+57	19	0.0	1	19
+58	16	0.0	1	15 1
+59	13	0.0	1	12 1
+60	12	0.0	1	11 1
+61	21	0.0	1	21
+62	13	0.0	1	13
+63	9	0.0	1	9
+64	10	0.0	1	10
+65	6	0.0	1	6
+66	14	0.0	1	14
+67	17	0.0	1	15 2
+68	10	0.0	1	10
+69	6	0.0	1	6
+70	4	0.0	1	2 2
+71	9	0.0	1	9
+72	13	0.0	1	13
+73	11	0.0	1	8 3
+74	16	0.0	1	7 9
+75	18	0.0	1	16 2
+76	14	0.0	1	9 5
+77	3	0.0	1	2 1
+78	4	0.0	1	2 2
+79	2	0.0	1	2
+80	2	0.0	1	2
+81	2	0.0	1	2
+82	2	0.0	1	1 1
+84	1	0.0	1	1
+86	1	0.0	1	1
+87	2	0.0	1	1 1
+90	1	0.0	1	1
+101	1	0.0	1	0 1
+102	1	0.0	1	0 1
+104	1	0.0	1	1
+105	1	0.0	1	0 1
+106	1	0.0	1	0 1
+108	1	0.0	1	0 1
+109	1	0.0	1	0 1
+116	1	0.0	1	0 1
+124	1	0.0	1	0 1
+126	16	0.0	1	1 15
+
+RUN STATISTICS FOR INPUT FILE: data/samples/paired_long_1_wt.fq
+=============================================
+100000 sequences processed in total
+The length threshold of paired-end sequences gets evaluated later on (in the validation step)
+
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: data/samples/paired_long_2_wt.fq
+Trimming mode: paired-end
+Trim Galore version: 0.6.10
+Cutadapt version: 4.3
+Python version: could not detect
+Number of cores used for trimming: 8
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+
+Cutadapt seems to be fairly up-to-date (version 4.3). Setting -j -j 8
+Writing final adapter and quality trimmed output to paired_long_2_wt_trimmed.fq
+
+
+  >>> Now performing quality (cutoff '-q 20') and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file data/samples/paired_long_2_wt.fq <<< 
+This is cutadapt 4.3 with Python 3.9.2
+Command line parameters: -j 8 -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC data/samples/paired_long_2_wt.fq
+Processing single-end reads on 8 cores ...
+Finished in 1.928 s (19.283 µs/read; 3.11 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:                 100,000
+Reads with adapters:                    39,269 (39.3%)
+Reads written (passing filters):       100,000 (100.0%)
+
+Total basepairs processed:    12,600,000 bp
+Quality-trimmed:                 160,174 bp (1.3%)
+Total written (filtered):     12,308,565 bp (97.7%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 39269 times
+
+Minimum overlap: 1
+No. of allowed errors:
+1-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 41.9%
+  C: 20.1%
+  G: 15.3%
+  T: 22.6%
+  none/other: 0.1%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	28175	25000.0	0	28175
+2	5225	6250.0	0	5225
+3	2133	1562.5	0	2133
+4	520	390.6	0	520
+5	188	97.7	0	188
+6	139	24.4	0	139
+7	124	6.1	0	124
+8	101	1.5	0	101
+9	98	0.4	0	97 1
+10	119	0.1	1	114 5
+11	61	0.0	1	57 4
+12	107	0.0	1	107
+13	42	0.0	1	39 3
+14	116	0.0	1	105 11
+15	82	0.0	1	77 5
+16	63	0.0	1	60 3
+17	130	0.0	1	125 5
+18	45	0.0	1	42 3
+19	78	0.0	1	75 3
+20	57	0.0	1	56 1
+21	44	0.0	1	43 1
+22	52	0.0	1	49 3
+23	72	0.0	1	70 2
+24	67	0.0	1	65 2
+25	45	0.0	1	45
+26	72	0.0	1	68 4
+27	63	0.0	1	62 1
+28	59	0.0	1	56 3
+29	31	0.0	1	29 2
+30	100	0.0	1	100
+31	35	0.0	1	32 3
+32	58	0.0	1	57 1
+33	37	0.0	1	37
+34	42	0.0	1	41 1
+35	45	0.0	1	44 1
+36	37	0.0	1	37
+37	28	0.0	1	28
+38	42	0.0	1	42
+39	29	0.0	1	29
+40	27	0.0	1	26 1
+41	46	0.0	1	46
+42	44	0.0	1	43 1
+43	11	0.0	1	10 1
+44	38	0.0	1	38
+45	46	0.0	1	43 3
+46	31	0.0	1	31
+47	11	0.0	1	11
+48	38	0.0	1	37 1
+49	27	0.0	1	27
+50	15	0.0	1	15
+51	33	0.0	1	32 1
+52	8	0.0	1	8
+53	14	0.0	1	14
+54	13	0.0	1	13
+55	16	0.0	1	16
+56	19	0.0	1	17 2
+57	13	0.0	1	12 1
+58	14	0.0	1	14
+59	11	0.0	1	11
+60	12	0.0	1	12
+61	16	0.0	1	16
+62	17	0.0	1	17
+63	11	0.0	1	10 1
+64	14	0.0	1	12 2
+65	12	0.0	1	10 2
+66	17	0.0	1	15 2
+67	33	0.0	1	22 11
+68	37	0.0	1	32 5
+69	18	0.0	1	14 4
+70	10	0.0	1	7 3
+71	5	0.0	1	3 2
+72	4	0.0	1	4
+73	1	0.0	1	1
+74	1	0.0	1	1
+75	1	0.0	1	1
+78	2	0.0	1	1 1
+79	1	0.0	1	1
+80	1	0.0	1	1
+81	1	0.0	1	1
+83	1	0.0	1	1
+84	1	0.0	1	1
+86	1	0.0	1	0 1
+87	1	0.0	1	1
+90	1	0.0	1	1
+95	1	0.0	1	1
+96	1	0.0	1	0 1
+97	1	0.0	1	0 1
+99	1	0.0	1	1
+109	1	0.0	1	0 1
+126	9	0.0	1	0 9
+
+RUN STATISTICS FOR INPUT FILE: data/samples/paired_long_2_wt.fq
+=============================================
+100000 sequences processed in total
+The length threshold of paired-end sequences gets evaluated later on (in the validation step)
+
+Validate paired-end files paired_long_1_wt_trimmed.fq and paired_long_2_wt_trimmed.fq
+file_1: paired_long_1_wt_trimmed.fq, file_2: paired_long_2_wt_trimmed.fq
+
+
+>>>>> Now validing the length of the 2 paired-end infiles: paired_long_1_wt_trimmed.fq and paired_long_2_wt_trimmed.fq <<<<<
+Writing validated paired-end Read 1 reads to paired_long_1_wt_val_1.fq
+Writing validated paired-end Read 2 reads to paired_long_2_wt_val_2.fq
+
+Total number of sequences analysed: 100000
+
+Number of sequence pairs removed because at least one read was shorter than the length cutoff (20 bp): 180 (0.18%)
+
+Deleting both intermediate output files paired_long_1_wt_trimmed.fq and paired_long_2_wt_trimmed.fq
+
+====================================================================================================
+

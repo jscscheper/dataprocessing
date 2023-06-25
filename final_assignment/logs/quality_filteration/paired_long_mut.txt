@@ -1,0 +1,375 @@
+Path to Cutadapt set as: 'cutadapt' (default)
+Cutadapt seems to be working fine (tested command 'cutadapt --version')
+Cutadapt version: 4.3
+Could not detect version of Python used by Cutadapt from the first line of Cutadapt (but found this: >>>#!/bin/sh<<<)
+Letting the (modified) Cutadapt deal with the Python version instead
+Parallel gzip (pigz) detected. Proceeding with multicore (de)compression using 8 cores
+
+igzip detected. Using igzip for decompressing
+
+No quality encoding type selected. Assuming that the data provided uses Sanger encoded Phred scores (default)
+
+Output will be written into the directory: /mnt/d/datap/final_assignment/data/trimmed/
+
+
+AUTO-DETECTING ADAPTER TYPE
+===========================
+Attempting to auto-detect adapter type from the first 1 million sequences of the first file (>> data/samples/paired_long_1_mut.fq <<)
+
+Found perfect matches for the following adapter sequences:
+Adapter type	Count	Sequence	Sequences analysed	Percentage
+Illumina	3635	AGATCGGAAGAGC	100000	3.64
+Nextera	1	CTGTCTCTTATA	100000	0.00
+smallRNA	0	TGGAATTCTCGG	100000	0.00
+Using Illumina adapter for trimming (count: 3635). Second best hit was Nextera (count: 1)
+
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: data/samples/paired_long_1_mut.fq
+Trimming mode: paired-end
+Trim Galore version: 0.6.10
+Cutadapt version: 4.3
+Python version: could not detect
+Number of cores used for trimming: 8
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+
+Cutadapt seems to be fairly up-to-date (version 4.3). Setting -j 8
+Writing final adapter and quality trimmed output to paired_long_1_mut_trimmed.fq
+
+
+  >>> Now performing quality (cutoff '-q 20') and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file data/samples/paired_long_1_mut.fq <<< 
+This is cutadapt 4.3 with Python 3.9.2
+Command line parameters: -j 8 -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC data/samples/paired_long_1_mut.fq
+Processing single-end reads on 8 cores ...
+Finished in 1.805 s (18.051 µs/read; 3.32 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:                 100,000
+Reads with adapters:                    36,135 (36.1%)
+Reads written (passing filters):       100,000 (100.0%)
+
+Total basepairs processed:    12,600,000 bp
+Quality-trimmed:                 154,472 bp (1.2%)
+Total written (filtered):     12,260,343 bp (97.3%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 36135 times
+
+Minimum overlap: 1
+No. of allowed errors:
+1-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 35.1%
+  C: 25.5%
+  G: 19.4%
+  T: 19.8%
+  none/other: 0.2%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	23697	25000.0	0	23697
+2	5088	6250.0	0	5088
+3	1674	1562.5	0	1674
+4	515	390.6	0	515
+5	220	97.7	0	220
+6	225	24.4	0	225
+7	135	6.1	0	135
+8	170	1.5	0	170
+9	173	0.4	0	171 2
+10	127	0.1	1	118 9
+11	143	0.0	1	132 11
+12	162	0.0	1	150 12
+13	111	0.0	1	106 5
+14	152	0.0	1	145 7
+15	105	0.0	1	99 6
+16	123	0.0	1	118 5
+17	129	0.0	1	118 11
+18	131	0.0	1	122 9
+19	117	0.0	1	113 4
+20	109	0.0	1	103 6
+21	100	0.0	1	94 6
+22	86	0.0	1	82 4
+23	134	0.0	1	126 8
+24	101	0.0	1	96 5
+25	113	0.0	1	108 5
+26	64	0.0	1	60 4
+27	112	0.0	1	101 11
+28	89	0.0	1	87 2
+29	95	0.0	1	87 8
+30	109	0.0	1	104 5
+31	92	0.0	1	87 5
+32	55	0.0	1	54 1
+33	103	0.0	1	102 1
+34	74	0.0	1	66 8
+35	71	0.0	1	68 3
+36	68	0.0	1	64 4
+37	67	0.0	1	65 2
+38	57	0.0	1	56 1
+39	69	0.0	1	64 5
+40	46	0.0	1	42 4
+41	121	0.0	1	119 2
+42	30	0.0	1	29 1
+43	19	0.0	1	18 1
+44	34	0.0	1	33 1
+45	39	0.0	1	38 1
+46	38	0.0	1	38
+47	32	0.0	1	30 2
+48	28	0.0	1	26 2
+49	37	0.0	1	36 1
+50	38	0.0	1	37 1
+51	46	0.0	1	45 1
+52	35	0.0	1	35
+53	35	0.0	1	34 1
+54	22	0.0	1	19 3
+55	26	0.0	1	24 2
+56	23	0.0	1	22 1
+57	26	0.0	1	24 2
+58	19	0.0	1	19
+59	15	0.0	1	14 1
+60	29	0.0	1	29
+61	20	0.0	1	19 1
+62	25	0.0	1	25
+63	24	0.0	1	24
+64	14	0.0	1	13 1
+65	17	0.0	1	17
+66	18	0.0	1	17 1
+67	9	0.0	1	9
+68	11	0.0	1	11
+69	16	0.0	1	15 1
+70	7	0.0	1	6 1
+71	17	0.0	1	16 1
+72	7	0.0	1	7
+73	25	0.0	1	17 8
+74	44	0.0	1	32 12
+75	45	0.0	1	32 13
+76	23	0.0	1	13 10
+77	10	0.0	1	8 2
+78	11	0.0	1	6 5
+79	6	0.0	1	4 2
+80	4	0.0	1	2 2
+81	7	0.0	1	6 1
+82	2	0.0	1	1 1
+83	5	0.0	1	5
+84	5	0.0	1	3 2
+87	2	0.0	1	2
+88	1	0.0	1	1
+89	2	0.0	1	1 1
+90	2	0.0	1	1 1
+91	1	0.0	1	1
+92	1	0.0	1	1
+93	2	0.0	1	2
+94	1	0.0	1	1
+97	1	0.0	1	1
+99	1	0.0	1	0 1
+102	1	0.0	1	1
+104	2	0.0	1	1 1
+107	1	0.0	1	0 1
+108	1	0.0	1	1
+109	2	0.0	1	2
+111	1	0.0	1	0 1
+112	1	0.0	1	1
+113	1	0.0	1	0 1
+115	2	0.0	1	1 1
+118	1	0.0	1	0 1
+119	1	0.0	1	0 1
+123	1	0.0	1	0 1
+124	3	0.0	1	1 2
+125	2	0.0	1	0 2
+126	26	0.0	1	0 26
+
+RUN STATISTICS FOR INPUT FILE: data/samples/paired_long_1_mut.fq
+=============================================
+100000 sequences processed in total
+The length threshold of paired-end sequences gets evaluated later on (in the validation step)
+
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: data/samples/paired_long_2_mut.fq
+Trimming mode: paired-end
+Trim Galore version: 0.6.10
+Cutadapt version: 4.3
+Python version: could not detect
+Number of cores used for trimming: 8
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+
+Cutadapt seems to be fairly up-to-date (version 4.3). Setting -j -j 8
+Writing final adapter and quality trimmed output to paired_long_2_mut_trimmed.fq
+
+
+  >>> Now performing quality (cutoff '-q 20') and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file data/samples/paired_long_2_mut.fq <<< 
+This is cutadapt 4.3 with Python 3.9.2
+Command line parameters: -j 8 -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC data/samples/paired_long_2_mut.fq
+Processing single-end reads on 8 cores ...
+Finished in 1.799 s (17.985 µs/read; 3.34 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:                 100,000
+Reads with adapters:                    34,331 (34.3%)
+Reads written (passing filters):       100,000 (100.0%)
+
+Total basepairs processed:    12,600,000 bp
+Quality-trimmed:                 203,201 bp (1.6%)
+Total written (filtered):     12,216,425 bp (97.0%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 34331 times
+
+Minimum overlap: 1
+No. of allowed errors:
+1-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 35.0%
+  C: 25.2%
+  G: 19.5%
+  T: 20.0%
+  none/other: 0.3%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	21763	25000.0	0	21763
+2	5387	6250.0	0	5387
+3	1527	1562.5	0	1527
+4	504	390.6	0	504
+5	196	97.7	0	196
+6	230	24.4	0	230
+7	168	6.1	0	168
+8	158	1.5	0	158
+9	152	0.4	0	151 1
+10	174	0.1	1	166 8
+11	88	0.0	1	84 4
+12	198	0.0	1	195 3
+13	73	0.0	1	69 4
+14	216	0.0	1	209 7
+15	72	0.0	1	70 2
+16	92	0.0	1	90 2
+17	216	0.0	1	208 8
+18	50	0.0	1	48 2
+19	167	0.0	1	159 8
+20	93	0.0	1	90 3
+21	54	0.0	1	52 2
+22	100	0.0	1	96 4
+23	159	0.0	1	153 6
+24	144	0.0	1	143 1
+25	73	0.0	1	69 4
+26	131	0.0	1	127 4
+27	95	0.0	1	89 6
+28	124	0.0	1	118 6
+29	52	0.0	1	50 2
+30	159	0.0	1	152 7
+31	32	0.0	1	26 6
+32	95	0.0	1	91 4
+33	55	0.0	1	54 1
+34	86	0.0	1	84 2
+35	65	0.0	1	64 1
+36	65	0.0	1	64 1
+37	58	0.0	1	56 2
+38	59	0.0	1	57 2
+39	50	0.0	1	49 1
+40	27	0.0	1	24 3
+41	74	0.0	1	71 3
+42	62	0.0	1	61 1
+43	21	0.0	1	20 1
+44	70	0.0	1	68 2
+45	69	0.0	1	68 1
+46	41	0.0	1	41
+47	16	0.0	1	16
+48	36	0.0	1	36
+49	30	0.0	1	30
+50	22	0.0	1	21 1
+51	63	0.0	1	61 2
+52	19	0.0	1	18 1
+53	28	0.0	1	28
+54	13	0.0	1	13
+55	19	0.0	1	19
+56	15	0.0	1	14 1
+57	28	0.0	1	27 1
+58	18	0.0	1	18
+59	20	0.0	1	19 1
+60	27	0.0	1	23 4
+61	20	0.0	1	18 2
+62	26	0.0	1	26
+63	29	0.0	1	27 2
+64	29	0.0	1	28 1
+65	18	0.0	1	17 1
+66	28	0.0	1	23 5
+67	41	0.0	1	20 21
+68	73	0.0	1	63 10
+69	34	0.0	1	28 6
+70	26	0.0	1	20 6
+71	9	0.0	1	6 3
+72	4	0.0	1	1 3
+73	3	0.0	1	3
+74	3	0.0	1	3
+75	7	0.0	1	5 2
+76	2	0.0	1	2
+77	4	0.0	1	3 1
+78	6	0.0	1	5 1
+79	4	0.0	1	4
+80	3	0.0	1	3
+82	1	0.0	1	0 1
+83	2	0.0	1	1 1
+84	4	0.0	1	4
+85	1	0.0	1	0 1
+86	3	0.0	1	3
+87	1	0.0	1	1
+88	1	0.0	1	1
+89	1	0.0	1	1
+90	2	0.0	1	2
+91	4	0.0	1	1 3
+93	1	0.0	1	1
+96	1	0.0	1	1
+97	1	0.0	1	0 1
+98	1	0.0	1	1
+100	2	0.0	1	2
+102	1	0.0	1	1
+103	1	0.0	1	1
+104	2	0.0	1	1 1
+106	1	0.0	1	0 1
+110	3	0.0	1	1 2
+112	1	0.0	1	1
+119	2	0.0	1	1 1
+121	2	0.0	1	1 1
+123	2	0.0	1	2
+124	1	0.0	1	1
+125	2	0.0	1	0 2
+126	20	0.0	1	0 20
+
+RUN STATISTICS FOR INPUT FILE: data/samples/paired_long_2_mut.fq
+=============================================
+100000 sequences processed in total
+The length threshold of paired-end sequences gets evaluated later on (in the validation step)
+
+Validate paired-end files paired_long_1_mut_trimmed.fq and paired_long_2_mut_trimmed.fq
+file_1: paired_long_1_mut_trimmed.fq, file_2: paired_long_2_mut_trimmed.fq
+
+
+>>>>> Now validing the length of the 2 paired-end infiles: paired_long_1_mut_trimmed.fq and paired_long_2_mut_trimmed.fq <<<<<
+Writing validated paired-end Read 1 reads to paired_long_1_mut_val_1.fq
+Writing validated paired-end Read 2 reads to paired_long_2_mut_val_2.fq
+
+Total number of sequences analysed: 100000
+
+Number of sequence pairs removed because at least one read was shorter than the length cutoff (20 bp): 398 (0.40%)
+
+Deleting both intermediate output files paired_long_1_mut_trimmed.fq and paired_long_2_mut_trimmed.fq
+
+====================================================================================================
+

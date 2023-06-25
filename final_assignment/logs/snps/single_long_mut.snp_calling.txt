@@ -1,0 +1,8 @@
+[warning] samtools mpileup option `P` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[warning] tag DV functional, but deprecated. Please switch to `AD` in future.
+[warning] tag INFO/DPR functional, but deprecated. Please switch to `INFO/AD` in future.
+[warning] tag DP4 functional, but deprecated. Please switch to `ADF` and `ADR` in future.
+[warning] tag DV functional, but deprecated. Please switch to `AD` in future.
+[warning] samtools mpileup option `t` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[warning] samtools mpileup option `u` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[mpileup] 1 samples in 1 input files

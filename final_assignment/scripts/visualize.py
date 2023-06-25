@@ -28,7 +28,7 @@ def parse_arguments():
     """
     parser = argparse.ArgumentParser(description="""""")
     parser.add_argument("-i", "--input_file",
-                        help="CSV inputfile with found SNPs",
+                        help="TXT inputfile with found SNPs",
                         required=True)
     parser.add_argument("-o", "--output_file",
                         help="Name and file location of produced plot", 
@@ -111,7 +111,10 @@ def plot_graph(dataframe, outputfile):
     fig, ax = plt.subplots()
     for name, group in groups:
         ax.plot(group.position, group.frequency, marker='o', linestyle='', ms=12, label=name)
-    ax.legend()
+    ax.legend(title="Chromosome")
+    ax.set_title(f'Founded SNPs for {outputfile}')
+    ax.set_xlabel('Gene location in millions of BP')
+    ax.set_ylabel('Frequency')
 
     plt.savefig(outputfile, bbox_inches='tight')
         

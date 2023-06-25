@@ -1,0 +1,60 @@
+00:00:00 SnpEff version SnpEff 5.1d (build 2022-04-19 15:49), by Pablo Cingolani
+00:00:00 Command: 'ann'
+00:00:00 Reading configuration file 'snpEff.config'. Genome: 'Arabidopsis_thaliana'
+00:00:00 Reading config file: /mnt/d/datap/final_assignment/snpEff.config
+00:00:00 Reading config file: /home/djscheper/miniconda3/envs/snake_env/share/snpeff-5.1-2/snpEff.config
+00:00:04 done
+00:00:04 Reading database for genome version 'Arabidopsis_thaliana' from file '/home/djscheper/miniconda3/envs/snake_env/share/snpeff-5.1-2/./data/Arabidopsis_thaliana/snpEffectPredictor.bin' (this might take a while)
+00:01:12 done
+00:01:12 Loading Motifs and PWMs
+00:01:12 Building interval forest
+00:01:48 done.
+00:01:48 Genome stats :
+#-----------------------------------------------
+# Genome name                : 'Arabidopsis_thaliana'
+# Genome version             : 'Arabidopsis_thaliana'
+# Genome ID                  : 'Arabidopsis_thaliana[0]'
+# Has protein coding info    : true
+# Has Tr. Support Level info : true
+# Genes                      : 32833
+# Protein coding genes       : 28317
+#-----------------------------------------------
+# Transcripts                : 54013
+# Avg. transcripts per gene  : 1.65
+# TSL transcripts            : 0
+#-----------------------------------------------
+# Checked transcripts        : 
+#               AA sequences :  48321 ( 98.59% )
+#              DNA sequences :  48354 ( 89.52% )
+#-----------------------------------------------
+# Protein coding transcripts : 49010
+#              Length errors :    419 ( 0.85% )
+#  STOP codons in CDS errors :    201 ( 0.41% )
+#         START codon errors :    764 ( 1.56% )
+#        STOP codon warnings :    317 ( 0.65% )
+#              UTR sequences :  44605 ( 82.58% )
+#               Total Errors :    770 ( 1.57% )
+#-----------------------------------------------
+# Cds                        : 286067
+# Exons                      : 313952
+# Exons with sequence        : 313952
+# Exons without sequence     : 0
+# Avg. exons per transcript  : 5.81
+# WARNING!                   : Mitochondrion chromosome 'Mt' does not have a mitochondrion codon table (codon table = 'Standard'). You should update the config file.
+#-----------------------------------------------
+# Number of chromosomes      : 7
+# Chromosomes                : Format 'chromo_name size codon_table'
+#		'1'	30427671	Standard
+#		'5'	26975502	Standard
+#		'3'	23459830	Standard
+#		'2'	19698289	Standard
+#		'4'	18585056	Standard
+#		'Mt'	366924	Standard
+#		'Pt'	154478	Standard
+#-----------------------------------------------
+
+00:02:06 Predicting variants
+00:02:07 Creating summary file: snpEff_summary.html
+00:02:09 Creating genes file: snpEff_genes.txt
+00:02:09 done.
+00:02:09 Done.

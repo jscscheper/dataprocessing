@@ -1,5 +1,6 @@
 workdir: /mnt/d/datap/final_assignment/
 
+data-dir: data/
 genome: data/genome/Arabidopsis_thaliana.fa
 trimmed-dir: data/trimmed/
 alignment-dir: data/alignment/
@@ -8,13 +9,6 @@ snp-dir: data/snp/
 samples-dir: data/samples/
 
 result-dir: results/
-
-extensions:
-  - "pac"
-  - "amb"
-  - "ann"
-  - "sa"
-  - "bwt"
 
 samples:
   - "single_long"
