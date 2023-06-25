@@ -8,7 +8,9 @@ rule snp_calling:
         genome = config['genome']
     log: "logs/snps/{sample}_{type}.snp_calling.txt"
     message: "Calling SNPs on {input.bam} to {output}"
-    shell: """(samtools mpileup -Q 30 -C 50 -P Illumina -t DP,DV,INFO/DPR,DP4,SP,DV -Buf {params.genome} {input.bam} | bcftools view -vcg --types snps - > {output}) 2> {log}"""
+    shell: """
+    (samtools mpileup -Q 30 -C 50 -P Illumina -t DP,DV,INFO/DPR,DP4,SP,DV -Buf {params.genome} {input.bam} | 
+    bcftools view -vcg --types snps - > {output}) 2> {log}"""
 
 rule snp_filter:
     input:

@@ -5,9 +5,9 @@ trimmed-dir: data/trimmed/
 alignment-dir: data/alignment/
 samtools-dir: data/samtools/
 snp-dir: data/snp/
-result-dir: results/
 samples-dir: data/samples/
-bam-dir: data/bam_samples/
+
+result-dir: results/
 
 extensions:
   - "pac"

@@ -13,10 +13,9 @@ rule trim_galore:
         temp_name = config['trimmed-dir'] + "{sample}_1_{type}_trimmed.fq"
     run:
         if len(input) == 1:
-        # STILL NEEDS A FIX
             shell("trim_galore --cores {threads} -o {params.dir} --no_report_file {input} 2> {log}")
             shell("touch {output.R2}")
             shell("mv {params.temp_name} {output.R1}")
         else:
             shell("trim_galore --cores {threads} -o {params.dir} --no_report_file --paired {input} 2> {log}")
-        
+    
