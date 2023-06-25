@@ -8,7 +8,6 @@ snp-dir: data/snp/
 result-dir: results/
 samples-dir: data/samples/
 bam-dir: data/bam_samples/
-conda-envs: envs/
 
 extensions:
   - "pac"

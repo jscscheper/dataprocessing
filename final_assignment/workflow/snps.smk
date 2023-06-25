@@ -3,7 +3,6 @@ rule snp_calling:
         bam = config['samtools-dir'] + "{sample}_{type}_sorted.bam"
     output:
         config['snp-dir'] + "{sample}_{type}.txt"
-    conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     benchmark: "benchmarks/{sample}_{type}.snps.snp_calling.benchmark.txt"
     params:
         genome = config['genome']
@@ -16,7 +15,6 @@ rule snp_filter:
          config['snp-dir'] + "{sample}_{type}.txt"
     output:
          config['snp-dir'] + "filtered_{sample}_{type}.txt"
-    conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     benchmark: "benchmarks/{sample}_{type}.snps.snp_filter.benchmark.txt"
     log: "logs/snps/{sample}_{type}.snp_filter.txt"
     message: "Filtering SNPs on {input} to {output}"
@@ -31,7 +29,6 @@ rule identifying_and_annotating_snps:
     log: "logs/snps/{sample}.identifying_and_annotating_snps.txt"
     message: "Identifying and annotating SNPs on {input} to {output}"
     benchmark: "benchmarks/{sample}_snps.identifying_and_annotating_snps.benchmark.txt"
-    conda: config['workdir'] + config['conda-envs'] + "snps.yaml"
     shell:
      """
      (subtractBed -a {input.control} -b {input.mutant} | snpEff Arabidopsis_thaliana -noLog -v - > {output}) 2> {log}

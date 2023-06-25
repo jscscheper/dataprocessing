@@ -9,7 +9,8 @@ rule bwa_index:
     shell: "bwa index {input}"
 
 rule bwa_alignment:
-    input: 
+    input:
+        genome = config['genome'],
         R1 = config['trimmed-dir'] + "{sample}_1_{type}_val_1.fq",
         R2 = config['trimmed-dir'] + "{sample}_2_{type}_val_2.fq"
     output:
@@ -26,25 +27,24 @@ rule bwa_alignment:
     shell: """
     avglength="$(seqkit fx2tab -nl {input} | awk -F'\\t' '{{sum+=$2}} END {{print sum/NR}}')"
     threshold="{params.threshold}"
-    inputfile="{input}"
 
     touch {output.tmp_file}
     touch {output.tmp_file2}
 
     if (( $(echo "$avglength > $threshold" | bc -l) )); then
         if [ -s {input.R2} ]; then
-            bwa mem -t {threads} {params.genome} {input} > {output.aligned_sam}
+            bwa mem -t {threads} {input.genome} {input} - > {output.aligned_sam}
         else
-            bwa mem -t {threads} {params.genome} {input.R1} > {output.aligned_sam}
+            bwa mem -t {threads} {input.genome} {input.R1} - > {output.aligned_sam}
         fi
     else
         if [[ $inputfile == *single* ]]; then
-            bwa aln -t {threads} {params.genome} {input.R1} > {output.tmp_file}
-            bwa samse {params.genome} {output.tmp_file} {input} > {output.aligned_sam}
+            bwa aln -t {threads} {input.genome} {input.R1} - > {output.tmp_file}
+            bwa samse {input.genome} {output.tmp_file} {input} - > {output.aligned_sam}
         else
-            bwa aln -t {threads} {params.genome} {input.R1} > {output.tmp_file} 
-            bwa aln -t {threads} {params.genome} {input.R2} > {output.tmp_file2}
-            bwa sampe {params.genome} {output.tmp_file} {output.tmp_file2} {input} > {output.aligned_sam}
+            bwa aln -t {threads} {input.genome} {input.R1} - > {output.tmp_file} 
+            bwa aln -t {threads} {input.genome} {input.R2} - > {output.tmp_file2}
+            bwa sampe {input.genome} {output.tmp_file} {output.tmp_file2} {input} - > {output.aligned_sam}
         fi
     fi
     """
