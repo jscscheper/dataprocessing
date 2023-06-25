@@ -100,8 +100,6 @@ After successfully activating the conda environment you find the configuration f
 
 We have one script from the original pipeline called `snpsPicker.js` and needs some additional installment.
 
-
-
 **Step 7: Adding a sample**
 
 This step is optional and gives instructions on how to add your own sample. A sample needs to be named properly so that the pipeline can recognize which input file it is dealing with. 
