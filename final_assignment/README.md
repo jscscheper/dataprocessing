@@ -85,7 +85,7 @@ This pipeline uses Conda for its package management. Please follow the instructi
 To install all necessary packages, create a conda environment and install the packages provided in `env.yaml`:
 
 ```{bash}
-conda env create -f environment.yml
+conda env create -f environment.yaml
 ```
 
 **Step 4: Activation**
